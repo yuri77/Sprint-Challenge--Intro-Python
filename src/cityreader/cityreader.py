@@ -13,6 +13,7 @@ class City:
 
     def __repr__(self):
         return f'City("{self.name}", {self.lat}, {self.lon})'
+        # return "{}, {}, {}".format(self.name, self.lat, self.lon)
 
 
 # We have a collection of US cities with population over 750,000 stored in the
@@ -34,7 +35,7 @@ def cityreader(cities=[]):
     # TODO Implement the functionality to read from the 'cities.csv' file
     # For each city record, create a new City instance and add it to the
     # `cities` list
-    #global cities
+    # global cities
     with open("cities.csv") as f:
         reader = csv.reader(f)
         next(reader)
@@ -43,7 +44,7 @@ def cityreader(cities=[]):
         #     data.append(row)
 
         for row in reader:
-            cities.append(City(row[0], row[3], row[4]))
+            cities.append(City(row[0], float(row[3]), float(row[4])))
 
     # cities = [City(row[0], row[3], row[4]) for row in reader]
     return cities
@@ -85,6 +86,9 @@ for c in cities:
 # Salt Lake City: (40.7774,-111.9301)
 
 # TODO Get latitude and longitude values from the user
+# first_cor = input("Enter lat1,lon1: ")
+# second_cor = input("Enter lat2,lon2: ")
+# print(first_cor)
 
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
