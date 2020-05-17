@@ -1,8 +1,8 @@
 # Create a class to hold a city location. Call the class "City". It should have
 # fields for name, lat and lon (representing latitude and longitude).
 
-
 import csv
+print("hello")
 
 
 class City:
@@ -12,7 +12,7 @@ class City:
         self.lon = lon
 
     def __repr__(self):
-        return f'City("{self.name}", {self.lat}, {self.lon})'
+        return f"{self.name}, {self.lat}, {self.lon}"
         # return "{}, {}, {}".format(self.name, self.lat, self.lon)
 
 
@@ -38,23 +38,31 @@ def cityreader(cities=[]):
     # global cities
     with open("cities.csv") as f:
         reader = csv.reader(f)
-        next(reader)
+        header = next(reader, None)
+
         # data = []
         # for row in reader:
         #     data.append(row)
 
         for row in reader:
             cities.append(City(row[0], float(row[3]), float(row[4])))
+        # cities_lats = [City(row[0], float(row[3]), float(row[4]))
+        #                for row in reader]
+        # # list comprehension cannot be used as cities is considered a new variable name
+        # cities = cities_lats
 
-    # cities = [City(row[0], row[3], row[4]) for row in reader]
+        # print(cities)
+
     return cities
 
 
 cityreader(cities)
-
+print(cities)
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
-    print(c)
+    print(f"{c.name}, {c.lat}, {c.lon} ")
+
+print(len(cities))
 
 # STRETCH GOAL!
 #
@@ -86,9 +94,9 @@ for c in cities:
 # Salt Lake City: (40.7774,-111.9301)
 
 # TODO Get latitude and longitude values from the user
-# first_cor = input("Enter lat1,lon1: ")
-# second_cor = input("Enter lat2,lon2: ")
-# print(first_cor)
+first_cor = input("Enter lat1,lon1: ")
+second_cor = input("Enter lat2,lon2: ")
+print(first_cor)
 
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
